@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Signup</string>
+    <string name="app_name">YBU</string>
     <string name="title_activity_welcome">Home Screen</string>
     <string name="next">sonraki</string>
     <string name="skip">geç</string>
@@ -22,12 +22,12 @@
     <string name="already_have_an_account_sign_in">Zaten hesabınız var mı? Giriş Yapın..</string>
     <string name="create_account">HESAP OLUŞTUR</string>
     <string name="Continue">Devam Et</string>
-    <string name="name">Ad</string>
+    <string name="okulnumarası">Okul Numarası</string>
     <string name="email">Email</string>
     <string name="password">Parola</string>
     <string name="no_account_yet_create_one">Hesabınız yok mu? Hemen oluşturun..</string>
     <string name="sign_in">Giriş</string>
-    <string name="title_activity_duyuru">DuyuruActivity</string>
+    <string name="title_activity_duyuru">Duyurular</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

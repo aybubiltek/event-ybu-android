@@ -1,0 +1,22 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="250dp"
+    android:background="#E0E0E0"
+    android:padding="15dp"
+    tools:context="info.androidhive.materialtabs.fragments.OneFragment">
+
+
+    <customfont.MyTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:text='Motorola Mobility, owned by Google, is breaking through the barriers that separate people from the things they love. We are designing technology that connects seamlessly.'
+        android:textColor="#3E3A7F"
+        android:textSize="14dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="12dp"
+        android:letterSpacing="0.025"
+        android:lineSpacingExtra="5dp"/>
+</RelativeLayout>

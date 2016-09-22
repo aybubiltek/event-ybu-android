@@ -11,5 +11,17 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.zeynep.ybu_app.DuyuruActivity"
     tools:showIn="@layout/app_bar_duyuru">
+    <ExpandableListView
+        android:id="@+id/lvExp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#90A4AE" /><!---->
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recyclerView"
+        android:layout_below="@+id/lvExp"
+         />
 
 </RelativeLayout>
