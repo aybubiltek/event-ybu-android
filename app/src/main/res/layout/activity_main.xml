@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignupActivity"
+    android:background="@drawable/bg">
+
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bgrect"
+        >
+
+
+
+    </FrameLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/terms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/already_have_an_account_sign_in"
+            android:textColor="#ffffff"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            />
+
+        <TextView
+            android:id="@+id/create"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/create_account"
+            android:textColor="#ffffff"
+            android:layout_marginTop="90dp"
+            android:textSize="23dp"
+            android:layout_centerHorizontal="true" />
+
+
+
+
+
+        <TextView
+            android:id="@+id/conti"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Continue"
+            android:textColor="#ffffff"
+            android:textSize="19dp"
+            android:layout_above="@+id/terms"
+            android:padding="16dp"
+            android:gravity="center"
+            android:background="@drawable/rect"
+            android:layout_marginBottom="16dp"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="150dp">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp">
+                <EditText
+                    android:textColor="#fff"
+                    android:id="@+id/name"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/rect1"
+                    android:layout_marginTop="220dp"
+                    android:inputType="number"
+                    android:hint="@string/okulnumarası"
+                    android:textColorHint="#ffffff"
+                    android:paddingLeft="20dp"
+                    android:drawableLeft="@drawable/user"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:drawablePadding="16dp">
+                </EditText>
+            </android.support.design.widget.TextInputLayout>
+            <TextView
+                android:id="@+id/uyari"
+                android:paddingTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Okul numaranızla kayıt yapınız. Okul emailinize onay emaili alacaksınız.."
+                android:textColor="#ffffff"
+                android:layout_gravity="center"
+                android:layout_centerHorizontal="true"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
