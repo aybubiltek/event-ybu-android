@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -26,6 +27,10 @@ public class open_welcome extends AppCompatActivity {
     private int[] layouts;
     private Button btnSkip, btnNext, btnSignUp;
     private PrefManager prefManager;
+    private ImageView _im;
+    private TextView _tx;
+    private static final float MIN_SCALE = 0.85f;
+    private static final float MIN_ALPHA = 0.5f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +48,45 @@ public class open_welcome extends AppCompatActivity {
         setContentView(R.layout.activity_open_welcome);
         //View objeleri tanımlandı
         viewPager = (ViewPager) findViewById(R.id.view_pager);
+        _im=(ImageView)findViewById(R.id.im);
+        _tx=(TextView)findViewById(R.id.tx);
+        viewPager.setPageTransformer(true, new ViewPager.PageTransformer() {
+            @Override
+            public void transformPage(View view, float position) {
+                int pageWidth = view.getWidth();
+                int pageHeight = view.getHeight();
+
+                if (position < -1) { // [-Infinity,-1)
+                    // This page is way off-screen to the left.
+                    view.setAlpha(0);
+
+                } else if (position <= 1) { // [-1,1]
+                    // Modify the default slide transition to shrink the page as well
+                    float scaleFactor = Math.max(MIN_SCALE, 1 - Math.abs(position));
+                    float vertMargin = pageHeight * (1 - scaleFactor) / 2;
+                    float horzMargin = pageWidth * (1 - scaleFactor) / 2;
+                    if (position < 0) {
+                        view.setTranslationX(horzMargin - vertMargin / 2);
+                    } else {
+                        view.setTranslationX(-horzMargin + vertMargin / 2);
+                    }
+
+                    // Scale the page down (between MIN_SCALE and 1)
+                    view.setScaleX(scaleFactor);
+                    view.setScaleY(scaleFactor);
+
+                    // Fade the page relative to its size.
+                    view.setAlpha(MIN_ALPHA +
+                            (scaleFactor - MIN_SCALE) /
+                                    (1 - MIN_SCALE) * (1 - MIN_ALPHA));
+
+                } else { // (1,+Infinity]
+                    // This page is way off-screen to the right.
+                    view.setAlpha(0);
+                }
+            }
+        });
+
         dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
         btnSkip = (Button) findViewById(R.id.btn_skip);
         btnNext = (Button) findViewById(R.id.btn_next);

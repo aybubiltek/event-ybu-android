@@ -14,7 +14,7 @@ import android.widget.Toast;
 public class SigninActivity extends AppCompatActivity {
     private static final int REQUEST_SIGNUP = 0;
     private static final String TAG = "SignIn Activity";
-    EditText emailEt;
+    EditText schoolNumberEt;
     EditText passEt;
     TextView _signinButton;
     TextView _CreateTextButton;
@@ -25,12 +25,12 @@ public class SigninActivity extends AppCompatActivity {
 
         Typeface custom_font = Typeface.createFromAsset(getAssets(),"font/Lato-Light.ttf");
 
-        emailEt = (EditText)findViewById(R.id.email);
+        schoolNumberEt = (EditText)findViewById(R.id.email);
         passEt = (EditText)findViewById(R.id.pass);
         _signinButton = (TextView) findViewById(R.id.signin);
         _CreateTextButton = (TextView)findViewById(R.id.Create);
         _CreateTextButton.setTypeface(custom_font);
-        emailEt.setTypeface(custom_font);
+        schoolNumberEt.setTypeface(custom_font);
         passEt.setTypeface(custom_font);
         _signinButton.setTypeface(custom_font);
         _signinButton.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +65,7 @@ public class SigninActivity extends AppCompatActivity {
         progressDialog.setMessage("Giriş Yapılıyor..");
         progressDialog.show();
 
-        String emailStr = emailEt.getText().toString();
+        String schoolNumber = schoolNumberEt.getText().toString();
         String passwordStr = passEt.getText().toString();
 
         // TODO: giriş için yapılacaklar
@@ -110,14 +110,14 @@ public class SigninActivity extends AppCompatActivity {
     public boolean validate() {
         boolean valid = true;
 
-        String emailStr = emailEt.getText().toString().trim();
+        String schoolnumber = schoolNumberEt.getText().toString().trim();
         String passwordStr = passEt.getText().toString();
 
-        if (emailStr.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(emailStr).matches()) {
-            emailEt.setError("Geçerli bir mail adresi giriniz");
+        if (schoolnumber.isEmpty() || schoolnumber.length() < 9&&schoolnumber.length()>13) {
+            schoolNumberEt.setError("Okul numarası 9-13 karakterlidir.");
             valid = false;
         } else {
-            emailEt.setError(null);
+            schoolNumberEt.setError(null);
         }
 
         if (passwordStr.isEmpty() || passwordStr.length()<10||passwordStr.length()>11 ) {

@@ -13,12 +13,11 @@ import android.widget.Toast;
 public class SignupActivity extends AppCompatActivity {
     private static final String TAG = "SignupActivity";
 
-    TextView signinTv;
+    TextView signinTv,uyari;
     TextView createButton;
     TextView conti;
-    EditText nameTv;
-    EditText emailTv;
-    EditText passTv;
+    EditText schoolNumberEt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,17 +25,16 @@ public class SignupActivity extends AppCompatActivity {
 
        Typeface custom_font = Typeface.createFromAsset(getAssets(),"font/Lato-Light.ttf");
         signinTv = (TextView)findViewById(R.id.terms);
+        uyari = (TextView)findViewById(R.id.uyari);
+
         createButton = (TextView)findViewById(R.id.create);
         conti = (TextView)findViewById(R.id.conti);
-        nameTv = (EditText)findViewById(R.id.name);
-        emailTv = (EditText)findViewById(R.id.email);
-        passTv = (EditText)findViewById(R.id.pass);
-        passTv.setTypeface(custom_font);
+        schoolNumberEt = (EditText)findViewById(R.id.name);
+        uyari.setTypeface(custom_font);
         signinTv.setTypeface(custom_font);
         createButton.setTypeface(custom_font);
         conti.setTypeface(custom_font);
-        nameTv.setTypeface(custom_font);
-        emailTv.setTypeface(custom_font);
+        schoolNumberEt.setTypeface(custom_font);
         conti.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,9 +67,8 @@ public class SignupActivity extends AppCompatActivity {
         progressDialog.setMessage("Hesap Oluşturuluyor..");
         progressDialog.show();
 
-        String name = nameTv.getText().toString();
-        String email = emailTv.getText().toString();
-        String password =passTv.getText().toString();
+        String schoolNumber = schoolNumberEt.getText().toString();
+
 
         // TODO: Implement your own signup logic here.
 
@@ -103,30 +100,16 @@ public class SignupActivity extends AppCompatActivity {
     public boolean validate() {
         boolean valid = true;
 
-        String name = nameTv.getText().toString();
-        String email = emailTv.getText().toString();
-        String password = passTv.getText().toString();
+        String schoolnumber = schoolNumberEt.getText().toString();
 
-        if (name.isEmpty() || name.length() < 3) {
-            nameTv.setError("en az 3 karakter giriniz");
+
+        if (schoolnumber.isEmpty() || schoolnumber.length() < 9&&schoolnumber.length()>13) {
+            schoolNumberEt.setError("Okul numarası 9-13 karakterlidir.");
             valid = false;
         } else {
-            nameTv.setError(null);
+            schoolNumberEt.setError(null);
         }
 
-        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            emailTv.setError("geçerli bir email adresi giriniz");
-            valid = false;
-        } else {
-            emailTv.setError(null);
-        }
-
-        if (password.isEmpty() || password.length() !=11) {
-            passTv.setError("şifre 11 karakterli olmalı");
-            valid = false;
-        } else {
-            passTv.setError(null);
-        }
 
         return valid;
     }
