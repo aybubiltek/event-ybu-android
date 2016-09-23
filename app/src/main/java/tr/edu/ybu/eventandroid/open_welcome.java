@@ -19,7 +19,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.zeynep.ybu_app.R;
+import tr.edu.ybu.eventandroid.R;
 
 public class open_welcome extends AppCompatActivity {
     private ViewPager viewPager;

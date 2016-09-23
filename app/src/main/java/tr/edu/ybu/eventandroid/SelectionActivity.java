@@ -11,7 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.zeynep.ybu_app.R;
+import tr.edu.ybu.eventandroid.R;
 
 public class SelectionActivity extends AppCompatActivity {
     ListView myList;

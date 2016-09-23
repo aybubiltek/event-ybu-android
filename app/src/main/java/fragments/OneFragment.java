@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.zeynep.ybu_app.R;
+import tr.edu.ybu.eventandroid.R;
 
 // import info.androidhive.materialtabs.R;
 

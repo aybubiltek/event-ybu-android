@@ -16,7 +16,7 @@ import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
-import com.example.zeynep.ybu_app.R;
+import tr.edu.ybu.eventandroid.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;

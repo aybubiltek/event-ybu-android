@@ -10,7 +10,7 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.zeynep.ybu_app.R;
+import tr.edu.ybu.eventandroid.R;
 
 import java.util.ArrayList;
 import java.util.List;
