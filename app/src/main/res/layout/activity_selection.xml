@@ -8,7 +8,7 @@ android:background="@color/white"
 
     android:layout_height="fill_parent"
 
-    tools:context=".SelectionActivity">
+    tools:context="tr.edu.ybu.eventandroid.SelectionActivity">
 
 
 <TextView

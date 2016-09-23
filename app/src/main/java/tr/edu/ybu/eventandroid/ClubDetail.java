@@ -1,4 +1,4 @@
-package com.example.zeynep.ybu_app;
+package tr.edu.ybu.eventandroid;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.zeynep.ybu_app.R;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 

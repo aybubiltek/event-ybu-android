@@ -1,4 +1,4 @@
-package com.example.zeynep.ybu_app;
+package tr.edu.ybu.eventandroid;
 
 import android.app.ProgressDialog;
 import android.graphics.Typeface;
@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.zeynep.ybu_app.R;
 
 public class SignupActivity extends AppCompatActivity {
     private static final String TAG = "SignupActivity";

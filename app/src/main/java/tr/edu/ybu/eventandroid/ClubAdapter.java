@@ -1,4 +1,4 @@
-package com.example.zeynep.ybu_app;
+package tr.edu.ybu.eventandroid;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,8 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.zeynep.ybu_app.R;
 
 import java.util.ArrayList;
 import java.util.List;

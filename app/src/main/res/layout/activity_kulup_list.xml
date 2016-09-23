@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    tools:context=".KulupListActivity"
+    tools:context="tr.edu.ybu.eventandroid.KulupListActivity"
     android:focusable="true"
     android:padding="15dp"
     android:focusableInTouchMode="true">

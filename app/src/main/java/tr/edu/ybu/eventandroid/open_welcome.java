@@ -1,4 +1,4 @@
-package com.example.zeynep.ybu_app;
+package tr.edu.ybu.eventandroid;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +18,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.zeynep.ybu_app.R;
 
 public class open_welcome extends AppCompatActivity {
     private ViewPager viewPager;

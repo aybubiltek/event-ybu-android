@@ -1,4 +1,4 @@
-package com.example.zeynep.ybu_app;
+package tr.edu.ybu.eventandroid;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +15,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
+
+import com.example.zeynep.ybu_app.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;

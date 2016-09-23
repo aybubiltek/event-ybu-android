@@ -1,4 +1,4 @@
-package com.example.zeynep.ybu_app;
+package tr.edu.ybu.eventandroid;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.zeynep.ybu_app.R;
 
 public class SelectionActivity extends AppCompatActivity {
     ListView myList;

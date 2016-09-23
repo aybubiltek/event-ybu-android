@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".open_welcome"
+            android:name="tr.edu.ybu.eventandroid.open_welcome"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,24 +18,24 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DuyuruActivity"
+            android:name="tr.edu.ybu.eventandroid.DuyuruActivity"
             android:label="@string/title_activity_duyuru"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".KulupListActivity"
+            android:name="tr.edu.ybu.eventandroid.KulupListActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SignupActivity"
+            android:name="tr.edu.ybu.eventandroid.SignupActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SigninActivity"
+            android:name="tr.edu.ybu.eventandroid.SigninActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SelectionActivity"
+            android:name="tr.edu.ybu.eventandroid.SelectionActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".ClubDetail" />
-        <activity android:name=".EventDetailActivity"></activity>
+        <activity android:name="tr.edu.ybu.eventandroid.ClubDetail" />
+        <activity android:name="tr.edu.ybu.eventandroid.EventDetailActivity"></activity>
     </application>
 
 </manifest>

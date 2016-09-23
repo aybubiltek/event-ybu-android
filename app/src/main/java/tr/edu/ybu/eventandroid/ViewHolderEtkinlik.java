@@ -1,9 +1,11 @@
-package com.example.zeynep.ybu_app;
+package tr.edu.ybu.eventandroid;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.zeynep.ybu_app.R;
 
 /**
  * Created by User on 4.09.2016.

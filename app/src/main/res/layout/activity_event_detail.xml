@@ -6,7 +6,7 @@
     android:layout_height="fill_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".EventDetailActivity"
+    tools:context="tr.edu.ybu.eventandroid.EventDetailActivity"
     android:padding="10dp"
     >
 
