@@ -8,9 +8,9 @@ public class Club {
     String explanation;
     private int idImg;
 
-    Club(String name, String explanation){
-        this.name=name;
-        this.explanation=explanation;
+    Club(String name, String explanation) {
+        this.name = name;
+        this.explanation = explanation;
     }
 
     public String getExp() {
@@ -27,13 +27,13 @@ public class Club {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void setDist(String explanation) {
 
         this.explanation = explanation;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
 }

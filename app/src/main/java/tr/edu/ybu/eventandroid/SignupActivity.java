@@ -10,12 +10,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import tr.edu.ybu.eventandroid.R;
-
 public class SignupActivity extends AppCompatActivity {
     private static final String TAG = "SignupActivity";
 
-    TextView signinTv,uyari;
+    TextView signinTv, uyari;
     TextView createButton;
     TextView conti;
     EditText schoolNumberEt;
@@ -25,13 +23,13 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-       Typeface custom_font = Typeface.createFromAsset(getAssets(),"font/Lato-Light.ttf");
-        signinTv = (TextView)findViewById(R.id.terms);
-        uyari = (TextView)findViewById(R.id.uyari);
+        Typeface custom_font = Typeface.createFromAsset(getAssets(), "font/Lato-Light.ttf");
+        signinTv = (TextView) findViewById(R.id.terms);
+        uyari = (TextView) findViewById(R.id.uyari);
 
-        createButton = (TextView)findViewById(R.id.create);
-        conti = (TextView)findViewById(R.id.conti);
-        schoolNumberEt = (EditText)findViewById(R.id.name);
+        createButton = (TextView) findViewById(R.id.create);
+        conti = (TextView) findViewById(R.id.conti);
+        schoolNumberEt = (EditText) findViewById(R.id.name);
         uyari.setTypeface(custom_font);
         signinTv.setTypeface(custom_font);
         createButton.setTypeface(custom_font);
@@ -105,7 +103,7 @@ public class SignupActivity extends AppCompatActivity {
         String schoolnumber = schoolNumberEt.getText().toString();
 
 
-        if (schoolnumber.isEmpty() || schoolnumber.length() < 9&&schoolnumber.length()>13) {
+        if (schoolnumber.isEmpty() || schoolnumber.length() < 9 && schoolnumber.length() > 13) {
             schoolNumberEt.setError("Okul numarası 9-13 karakterlidir.");
             valid = false;
         } else {
@@ -115,7 +113,6 @@ public class SignupActivity extends AppCompatActivity {
 
         return valid;
     }
-
 
 
 }

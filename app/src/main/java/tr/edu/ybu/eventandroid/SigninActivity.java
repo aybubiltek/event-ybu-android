@@ -11,8 +11,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import tr.edu.ybu.eventandroid.R;
-
 public class SigninActivity extends AppCompatActivity {
     private static final int REQUEST_SIGNUP = 0;
     private static final String TAG = "SignIn Activity";
@@ -20,17 +18,18 @@ public class SigninActivity extends AppCompatActivity {
     EditText passEt;
     TextView _signinButton;
     TextView _CreateTextButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signin);
 
-        Typeface custom_font = Typeface.createFromAsset(getAssets(),"font/Lato-Light.ttf");
+        Typeface custom_font = Typeface.createFromAsset(getAssets(), "font/Lato-Light.ttf");
 
-        schoolNumberEt = (EditText)findViewById(R.id.email);
-        passEt = (EditText)findViewById(R.id.pass);
+        schoolNumberEt = (EditText) findViewById(R.id.email);
+        passEt = (EditText) findViewById(R.id.pass);
         _signinButton = (TextView) findViewById(R.id.signin);
-        _CreateTextButton = (TextView)findViewById(R.id.Create);
+        _CreateTextButton = (TextView) findViewById(R.id.Create);
         _CreateTextButton.setTypeface(custom_font);
         schoolNumberEt.setTypeface(custom_font);
         passEt.setTypeface(custom_font);
@@ -38,19 +37,20 @@ public class SigninActivity extends AppCompatActivity {
         _signinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                     login();
+                login();
             }
         });
         _CreateTextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(SigninActivity.this, SignupActivity.class);
-                startActivityForResult(it,REQUEST_SIGNUP);
+                startActivityForResult(it, REQUEST_SIGNUP);
             }
         });
 
 
     }
+
     public void login() {
         Log.d(TAG, "Login");
 
@@ -88,7 +88,7 @@ public class SigninActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 // TODO: Kayıt için yapılacaklar
                 //aktivite biter ve seçim sayfasına yönlendirilir
-               this.finish();
+                this.finish();
             }
         }
     }
@@ -115,14 +115,14 @@ public class SigninActivity extends AppCompatActivity {
         String schoolnumber = schoolNumberEt.getText().toString().trim();
         String passwordStr = passEt.getText().toString();
 
-        if (schoolnumber.isEmpty() || schoolnumber.length() < 9&&schoolnumber.length()>13) {
+        if (schoolnumber.isEmpty() || schoolnumber.length() < 9 && schoolnumber.length() > 13) {
             schoolNumberEt.setError("Okul numarası 9-13 karakterlidir.");
             valid = false;
         } else {
             schoolNumberEt.setError(null);
         }
 
-        if (passwordStr.isEmpty() || passwordStr.length()<10||passwordStr.length()>11 ) {
+        if (passwordStr.isEmpty() || passwordStr.length() < 10 || passwordStr.length() > 11) {
             passEt.setError("Parola 11 karakterden az ya da fazla karakter içeremez");
             valid = false;
         } else {

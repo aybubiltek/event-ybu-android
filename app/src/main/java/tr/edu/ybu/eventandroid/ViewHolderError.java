@@ -4,8 +4,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import tr.edu.ybu.eventandroid.R;
-
 /**
  * Created by User on 6.09.2016.
  */

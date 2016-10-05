@@ -4,10 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,20 +19,47 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import tr.edu.ybu.eventandroid.R;
-
-public class open_welcome extends AppCompatActivity {
+public class Welcome extends AppCompatActivity {
+    private static final float MIN_SCALE = 0.85f;
+    private static final float MIN_ALPHA = 0.5f;
     private ViewPager viewPager;
     private MyViewPagerAdapter myViewPagerAdapter;
     private LinearLayout dotsLayout;
     private TextView[] dots;
     private int[] layouts;
     private Button btnSkip, btnNext, btnSignUp;
+    //  viewpager change listener
+    ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
+
+        @Override
+        public void onPageSelected(int position) {
+            addBottomDots(position);
+            if (position == layouts.length - 1) {
+
+                btnSignUp.setText(getString(R.string.start_signup));
+                btnSignUp.setVisibility(View.VISIBLE);
+                btnNext.setText(getString(R.string.start));
+                btnSkip.setVisibility(View.INVISIBLE);
+            } else {
+                btnNext.setText(getString(R.string.next));
+                btnSkip.setVisibility(View.INVISIBLE);
+                btnSignUp.setVisibility(View.INVISIBLE);
+            }
+        }
+
+        @Override
+        public void onPageScrolled(int arg0, float arg1, int arg2) {
+
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int arg0) {
+
+        }
+    };
     private PrefManager prefManager;
     private ImageView _im;
     private TextView _tx;
-    private static final float MIN_SCALE = 0.85f;
-    private static final float MIN_ALPHA = 0.5f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,13 +72,13 @@ public class open_welcome extends AppCompatActivity {
         }
         //notification barı görünmez yapar
         if (Build.VERSION.SDK_INT >= 21) {
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE|View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
         setContentView(R.layout.activity_open_welcome);
         //View objeleri tanımlandı
         viewPager = (ViewPager) findViewById(R.id.view_pager);
-        _im=(ImageView)findViewById(R.id.im);
-        _tx=(TextView)findViewById(R.id.tx);
+        _im = (ImageView) findViewById(R.id.im);
+        _tx = (TextView) findViewById(R.id.tx);
         viewPager.setPageTransformer(true, new ViewPager.PageTransformer() {
             @Override
             public void transformPage(View view, float position) {
@@ -92,7 +119,7 @@ public class open_welcome extends AppCompatActivity {
         dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
         btnSkip = (Button) findViewById(R.id.btn_skip);
         btnNext = (Button) findViewById(R.id.btn_next);
-        btnSignUp=(Button) findViewById(R.id.btn_signup);
+        btnSignUp = (Button) findViewById(R.id.btn_signup);
         btnSignUp.setVisibility(View.INVISIBLE);
         // welcome layoutlardan dizi oluşturuldu
         layouts = new int[]{
@@ -101,7 +128,7 @@ public class open_welcome extends AppCompatActivity {
                 R.layout.welcome_3,
                 R.layout.welcome_4};
 
-       //alt noktalar konuldu
+        //alt noktalar konuldu
         addBottomDots(0);
         //notification bar görünmez yapıldı
         changeStatusBarColor();
@@ -120,7 +147,7 @@ public class open_welcome extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 prefManager.setIsFirstTimeLaunch(false);
-                startActivity(new Intent(open_welcome.this, SignupActivity.class));
+                startActivity(new Intent(Welcome.this, SignupActivity.class));
                 finish();
             }
         });
@@ -166,39 +193,9 @@ public class open_welcome extends AppCompatActivity {
 
     private void launchHomeScreen() {
         prefManager.setIsFirstTimeLaunch(false);
-        startActivity(new Intent(open_welcome.this, SelectionActivity.class));
+        startActivity(new Intent(Welcome.this, SelectionActivity.class));
         finish();
     }
-
-    //  viewpager change listener
-    ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
-
-        @Override
-        public void onPageSelected(int position) {
-            addBottomDots(position);
-            if (position == layouts.length - 1) {
-
-                btnSignUp.setText(getString(R.string.start_signup));
-                btnSignUp.setVisibility(View.VISIBLE);
-                btnNext.setText(getString(R.string.start));
-                btnSkip.setVisibility(View.INVISIBLE);
-            } else {
-                btnNext.setText(getString(R.string.next));
-                btnSkip.setVisibility(View.INVISIBLE);
-                btnSignUp.setVisibility(View.INVISIBLE);
-            }
-        }
-
-        @Override
-        public void onPageScrolled(int arg0, float arg1, int arg2) {
-
-        }
-
-        @Override
-        public void onPageScrollStateChanged(int arg0) {
-
-        }
-    };
 
     /**
      * Making notification bar transparent

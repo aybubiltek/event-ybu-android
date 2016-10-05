@@ -13,7 +13,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import tr.edu.ybu.eventandroid.R;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 
@@ -24,23 +23,46 @@ import fragments.OneFragment;
 import fragments.TwoFragment;
 
 public class EventDetailActivity extends AppCompatActivity {
+    public int flag = 0;
     FloatingActionMenu materialDesignFAM;
     FloatingActionButton floatingActionButton1, floatingActionButton5;
-
     ViewPager viewPager;
-    swipe adapter;
+    CustomSwipeAdapter adapter;
     private TabLayout tabLayout;
     private ViewPager viewPager2;
 
-    public int flag=0;
+    public static Intent getOpenFacebookIntent(Context context) {
+
+        try {
+            context.getPackageManager()
+                    .getPackageInfo("com.facebook.katana", 0); //Checks if FB is even installed.
+            return new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("fb://page/376227335860239")); //Trys to make intent with FB's URI
+        } catch (Exception e) {
+            return new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://www.facebook.com/YbuBiltek.Official/")); //catches and opens a url to the desired page
+        }
+    }
+
+    public static Intent getOpenInstagramIntent(Context context) {
+
+        try {
+            context.getPackageManager()
+                    .getPackageInfo("com.instagram.android", 0); //Checks if Instagram is even installed.
+            return new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://www.instagram.com/accounts/login/")); //Trys to make intent with Instagram's URI
+        } catch (Exception e) {
+            return new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://www.instagram.com/accounts/login/")); //catches and opens a url to the desired page
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_detail);
-        viewPager=(ViewPager)findViewById(R.id.viewpagerKulupDetay);
-        adapter=new swipe(this);
-
+        viewPager = (ViewPager) findViewById(R.id.viewpagerKulupDetay);
+        adapter = new CustomSwipeAdapter(this);
 
 
         final TextView b1 = (TextView) findViewById(R.id.buttonTakip);
@@ -49,14 +71,11 @@ public class EventDetailActivity extends AppCompatActivity {
             public void onClick(View v) {
                 b1.setText(" ✔");
                 flag++;
-                if(flag==2)
-                {
+                if (flag == 2) {
                     b1.setText("Katıl");
-                    flag=flag-2;
+                    flag = flag - 2;
                 }
             }
-
-
 
 
         });
@@ -66,7 +85,6 @@ public class EventDetailActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager2);
         viewPager.setAdapter(adapter);
-
 
 
         materialDesignFAM = (FloatingActionMenu) findViewById(R.id.social_floating_menu);
@@ -84,8 +102,6 @@ public class EventDetailActivity extends AppCompatActivity {
         });
 
 
-
-
         floatingActionButton5.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //TODO something when floating action menu second item clicked
@@ -95,43 +111,7 @@ public class EventDetailActivity extends AppCompatActivity {
         });
 
 
-
-
     }
-
-
-
-    public static Intent getOpenFacebookIntent(Context context) {
-
-        try {
-            context.getPackageManager()
-                    .getPackageInfo("com.facebook.katana", 0); //Checks if FB is even installed.
-            return new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("fb://page/376227335860239")); //Trys to make intent with FB's URI
-        } catch (Exception e) {
-            return new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("https://www.facebook.com/YbuBiltek.Official/")); //catches and opens a url to the desired page
-        }
-    }
-
-
-
-
-
-
-    public static Intent getOpenInstagramIntent(Context context) {
-
-        try {
-            context.getPackageManager()
-                    .getPackageInfo("com.instagram.android", 0); //Checks if Instagram is even installed.
-            return new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("https://www.instagram.com/accounts/login/")); //Trys to make intent with Instagram's URI
-        } catch (Exception e) {
-            return new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("https://www.instagram.com/accounts/login/")); //catches and opens a url to the desired page
-        }
-    }
-
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());

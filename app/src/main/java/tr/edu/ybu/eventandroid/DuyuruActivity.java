@@ -16,8 +16,6 @@ import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
-import tr.edu.ybu.eventandroid.R;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,7 +29,7 @@ public class DuyuruActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        ArrayList<Object> arrayOfUsers ;
+        ArrayList<Object> arrayOfUsers;
         final RecyclerView lv;
         MyComplexAdapter adapter;
         ExpandableListAdapter listAdapter;
@@ -51,25 +49,24 @@ public class DuyuruActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        arrayOfUsers=getSampleArrayList();
-        lv=(RecyclerView) findViewById(R.id.recyclerView);
-        adapter = new MyComplexAdapter(arrayOfUsers,getApplicationContext());
+        arrayOfUsers = getSampleArrayList();
+        lv = (RecyclerView) findViewById(R.id.recyclerView);
+        adapter = new MyComplexAdapter(arrayOfUsers, getApplicationContext());
         lv.setAdapter(adapter);
         lv.setLayoutManager(new LinearLayoutManager(this));
         lv.addOnItemTouchListener(new RecyclerItemClickListener(getApplicationContext(), new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                int id=view.getId();
-                if(id==(-1)){
+                int id = view.getId();
+                if (id == (-1)) {
                     //Toast.makeText(getApplicationContext(),"etkinlik",Toast.LENGTH_LONG).show();
-                Intent i=new Intent(DuyuruActivity.this,EventDetailActivity.class);
-                startActivity(i);}
-                else if(id==(2131558549)){
-                  //  Toast.makeText(getApplicationContext(),"duyuru",Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(DuyuruActivity.this, EventDetailActivity.class);
+                    startActivity(i);
+                } else if (id == (2131558549)) {
+                    //  Toast.makeText(getApplicationContext(),"duyuru",Toast.LENGTH_LONG).show();
 
-                }
-                else
-                    Toast.makeText(getApplicationContext(),id+"  "+lv.getChildAdapterPosition(view),Toast.LENGTH_LONG).show();
+                } else
+                    Toast.makeText(getApplicationContext(), id + "  " + lv.getChildAdapterPosition(view), Toast.LENGTH_LONG).show();
             }
         }));
 
@@ -150,7 +147,7 @@ public class DuyuruActivity extends AppCompatActivity
         } else if (id == R.id.etkinlikler) {
 
         } else if (id == R.id.kulupler) {
-            Intent intent=new Intent(DuyuruActivity.this,KulupListActivity.class);
+            Intent intent = new Intent(DuyuruActivity.this, KulupListActivity.class);
             startActivity(intent);
         } else if (id == R.id.ayarlar) {
 
@@ -162,18 +159,20 @@ public class DuyuruActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
     private ArrayList<Object> getSampleArrayList() {
         ArrayList<Object> items = new ArrayList<>();
         items.add(new Duyuru("Duyuru", "Ayrıntı"));
-        items.add(new Etkinlik("Etkinlik","Ayrıntı"));
+        items.add(new Etkinlik("Etkinlik", "Ayrıntı"));
         items.add(new Duyuru("Duyuru", "Ayrıntı"));
-        items.add(new Etkinlik("Etkinlik","Ayrıntı"));
+        items.add(new Etkinlik("Etkinlik", "Ayrıntı"));
         items.add(new Duyuru("Duyuru", "Ayrıntı"));
-        items.add(new Etkinlik("Etkinlik","Ayrıntı"));
+        items.add(new Etkinlik("Etkinlik", "Ayrıntı"));
 
 
         return items;
     }
+
     private void prepareListData() {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();

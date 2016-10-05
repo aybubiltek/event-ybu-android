@@ -8,12 +8,8 @@ public class Duyuru {
     String baslik;
     String ayrinti;
 
-    public Duyuru(String baslik, String ayrinti){
-        this.baslik=baslik;
-        this.ayrinti=ayrinti;
-    }
-
-    public void setAyrinti(String ayrinti) {
+    public Duyuru(String baslik, String ayrinti) {
+        this.baslik = baslik;
         this.ayrinti = ayrinti;
     }
 
@@ -21,11 +17,15 @@ public class Duyuru {
         return ayrinti;
     }
 
-    public void setBaslik(String baslik) {
-        this.baslik = baslik;
+    public void setAyrinti(String ayrinti) {
+        this.ayrinti = ayrinti;
     }
 
     public String getBaslik() {
         return baslik;
+    }
+
+    public void setBaslik(String baslik) {
+        this.baslik = baslik;
     }
 }

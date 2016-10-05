@@ -5,8 +5,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import tr.edu.ybu.eventandroid.R;
-
 /**
  * Created by User on 4.09.2016.
  */
@@ -30,6 +28,7 @@ public class ViewHolderEtkinlik extends RecyclerView.ViewHolder {
     public void setImageView(ImageView ivExample) {
         this.ivExample = ivExample;
     }
+
     public TextView getText1() {
         return text1;
     }

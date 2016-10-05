@@ -6,20 +6,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import tr.edu.ybu.eventandroid.R;
-
 import java.util.List;
 
 public class MyComplexAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-Context context;
+    private final int DUYURU = 0, ETKINLIK = 1;
+    Context context;
     // The items to display in your RecyclerView
     private List<Object> items;
 
-    private final int DUYURU = 0, ETKINLIK = 1;
-
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyComplexAdapter(List<Object> items,Context c) {
-        this.context=c;
+    public MyComplexAdapter(List<Object> items, Context c) {
+        this.context = c;
         this.items = items;
     }
 
@@ -31,7 +28,7 @@ Context context;
     }
 
     @Override
-     public int getItemViewType(int position) {
+    public int getItemViewType(int position) {
         if (items.get(position) instanceof Duyuru) {
             return DUYURU;
         } else if (items.get(position) instanceof Etkinlik) {
@@ -95,6 +92,7 @@ Context context;
                 break;
         }
     }
+
     private void configureDefaultViewHolder(ViewHolderError vh, int position) {
         vh.getlabel().setText((CharSequence) items.get(position));
     }
@@ -107,7 +105,7 @@ Context context;
         }
     }
 
-    private void configureViewHolderEtkinlik(ViewHolderEtkinlik vh2 , int position) {
+    private void configureViewHolderEtkinlik(ViewHolderEtkinlik vh2, int position) {
         Etkinlik e = (Etkinlik) items.get(position);
         if (e != null) {
             vh2.getText1().setText(e.etkinlikbaslik);

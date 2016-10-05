@@ -11,8 +11,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import tr.edu.ybu.eventandroid.R;
-
 public class SelectionActivity extends AppCompatActivity {
     ListView myList;
     TextView getChoice;
@@ -38,21 +36,20 @@ public class SelectionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_selection);
         Intent intent = new Intent(this, SigninActivity.class);
         startActivity(intent);
-        myList = (ListView)findViewById(R.id.list);
-        ann=(TextView)findViewById(R.id.announcements);
+        myList = (ListView) findViewById(R.id.list);
+        ann = (TextView) findViewById(R.id.announcements);
         getChoice = (TextView) findViewById(R.id.getchoice);
-        Typeface custom_font = Typeface.createFromAsset(getAssets(),"font/Lato-Light.ttf");
+        Typeface custom_font = Typeface.createFromAsset(getAssets(), "font/Lato-Light.ttf");
         ann.setTypeface(custom_font);
         getChoice.setTypeface(custom_font);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                                                                android.R.layout.simple_list_item_multiple_choice,
-                                                                annList);
+                android.R.layout.simple_list_item_multiple_choice,
+                annList);
 
         myList.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         myList.setAdapter(adapter);
 
-        getChoice.setOnClickListener(new View.OnClickListener(){
-
+        getChoice.setOnClickListener(new View.OnClickListener() {
 
 
             @Override
@@ -62,18 +59,18 @@ public class SelectionActivity extends AppCompatActivity {
 
                 SparseBooleanArray sparseBooleanArray = myList.getCheckedItemPositions();
 
-                for(int i = 0; i < cntChoice; i++){
+                for (int i = 0; i < cntChoice; i++) {
 
-                    if(sparseBooleanArray.get(i)) {
+                    if (sparseBooleanArray.get(i)) {
 
                         selected += myList.getItemAtPosition(i).toString() + "\n";
                     }
                 }
                 Toast.makeText(SelectionActivity.this, selected, Toast.LENGTH_LONG).show();
-                Intent intent=new Intent(getApplicationContext(),DuyuruActivity.class);
+                Intent intent = new Intent(getApplicationContext(), DuyuruActivity.class);
                 startActivity(intent);
-            }});
-
+            }
+        });
 
 
     }
