@@ -21,9 +21,7 @@ public class CustomSwipeAdapter extends PagerAdapter {
 
     CustomSwipeAdapter(Context context) {
         this.context = context;
-
     }
-
 
     @Override
     public int getCount() {
