@@ -11,6 +11,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class SigninActivity extends AppCompatActivity {
     private static final int REQUEST_SIGNUP = 0;
     private static final String TAG = "SignIn Activity";
@@ -59,26 +62,53 @@ public class SigninActivity extends AppCompatActivity {
             return;
         }
 
-        _signinButton.setEnabled(false);
-
-        final ProgressDialog progressDialog = new ProgressDialog(SigninActivity.this,
-                R.style.AppTheme_Dark_Dialog);
-        progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Giriş Yapılıyor..");
-        progressDialog.show();
-
         String schoolNumber = schoolNumberEt.getText().toString();
         String passwordStr = passEt.getText().toString();
 
-        // TODO: giriş için yapılacaklar
+        final ProgressDialog[] progressDialog = new ProgressDialog[1];
+        JsonHelper jsonHelper = new JsonHelper(new JsonHelper.JsonRequest() {
+            @Override
+            public void onPreExecute() {
+                _signinButton.setEnabled(false);
 
-        new android.os.Handler().postDelayed(
-                new Runnable() {
-                    public void run() {
-                        onLoginSuccess();
-                        progressDialog.dismiss();
-                    }
-                }, 3000);
+                progressDialog[0] = new ProgressDialog(SigninActivity.this,
+                        R.style.AppTheme_Dark_Dialog);
+                progressDialog[0].setIndeterminate(true);
+                progressDialog[0].setMessage("Giriş Yapılıyor..");
+                progressDialog[0].show();
+            }
+
+            @Override
+            public JSONObject parse(String jsonString) throws JSONException {
+                JSONObject jsonObject = new JSONObject(jsonString);
+                if(!jsonObject.getBoolean("status")){
+                    Welcome.log("Status false. Reason: " + jsonObject.getInt("reason"));
+                    return null;
+                }
+                return jsonObject;
+            }
+
+            @Override
+            public void onPostExecute(JSONObject json) {
+                if(json == null){
+                    Welcome.log("JSON null.");
+                    return;
+                }
+                Toast.makeText(getApplicationContext(), json.toString(), Toast.LENGTH_LONG).show();
+                Welcome.log(json.toString());
+                new android.os.Handler().postDelayed(
+                        new Runnable() {
+                            public void run() {
+                                onLoginSuccess();
+                                progressDialog[0].dismiss();
+                            }
+                        }, 3000);
+            }
+        });
+
+        // TODO: giriş için yapılacaklar
+        jsonHelper.execute("login", "email", schoolNumber+"@ybu.edu.tr", "pass", passwordStr);
+
     }
 
 
@@ -115,15 +145,15 @@ public class SigninActivity extends AppCompatActivity {
         String schoolnumber = schoolNumberEt.getText().toString().trim();
         String passwordStr = passEt.getText().toString();
 
-        if (schoolnumber.isEmpty() || schoolnumber.length() < 9 && schoolnumber.length() > 13) {
-            schoolNumberEt.setError("Okul numarası 9-13 karakterlidir.");
+        if (schoolnumber.isEmpty() || schoolnumber.length() < 9 && schoolnumber.length() > 15) {
+            schoolNumberEt.setError("Okul numarası 9-15 karakterlidir.");
             valid = false;
         } else {
             schoolNumberEt.setError(null);
         }
 
-        if (passwordStr.isEmpty() || passwordStr.length() < 10 || passwordStr.length() > 11) {
-            passEt.setError("Parola 11 karakterden az ya da fazla karakter içeremez");
+        if (passwordStr.isEmpty() || passwordStr.length() < 6 || passwordStr.length() > 32) {
+            passEt.setError("Parola 8-32 karakterden oluşmalıdır.");
             valid = false;
         } else {
             passEt.setError(null);

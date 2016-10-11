@@ -8,7 +8,6 @@ import android.content.SharedPreferences;
  */
 public class PrefManager {
     //shared preferences file name
-    private static final String PREF_NAME = "ybu-welcome";
     private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
     SharedPreferences pref;
     SharedPreferences.Editor editor;
@@ -16,9 +15,9 @@ public class PrefManager {
     //shared pref mode
     int PRIVATE_MODE = 0;
 
-    public PrefManager(Context context) {
+    public PrefManager(Context context, String pref_name) {
         this._context = context;
-        pref = _context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
+        pref = _context.getSharedPreferences(pref_name, PRIVATE_MODE);
         editor = pref.edit();
     }
 

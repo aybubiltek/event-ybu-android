@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="tr.edu.ybu.eventandroid">
-
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -35,7 +35,7 @@
             android:name="tr.edu.ybu.eventandroid.SelectionActivity"
             android:screenOrientation="portrait" />
         <activity android:name="tr.edu.ybu.eventandroid.ClubDetail" />
-        <activity android:name="tr.edu.ybu.eventandroid.EventDetailActivity"></activity>
+        <activity android:name="tr.edu.ybu.eventandroid.EventDetailActivity" />
     </application>
 
 </manifest>

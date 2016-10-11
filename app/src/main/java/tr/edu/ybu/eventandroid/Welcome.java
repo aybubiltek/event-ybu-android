@@ -9,6 +9,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import android.widget.TextView;
 public class Welcome extends AppCompatActivity {
     private static final float MIN_SCALE = 0.85f;
     private static final float MIN_ALPHA = 0.5f;
+    private static final String PACKAGE_NAME = "tr.edu.ybu.eventandroid";
     private ViewPager viewPager;
     private MyViewPagerAdapter myViewPagerAdapter;
     private LinearLayout dotsLayout;
@@ -65,7 +67,7 @@ public class Welcome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //uygulamanın ilk kez açılıp açılmadığını kontrol eder
-        prefManager = new PrefManager(this);
+        prefManager = new PrefManager(this, "ybu-mobil");
         if (!prefManager.isFirstTimeLaunch()) {
             launchHomeScreen();
             finish();
@@ -243,5 +245,8 @@ public class Welcome extends AppCompatActivity {
             View view = (View) object;
             container.removeView(view);
         }
+    }
+    public static void log(String text) {
+        Log.i(Welcome.PACKAGE_NAME, text);
     }
 }

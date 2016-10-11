@@ -99,6 +99,7 @@ public class MyComplexAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     private void configureViewHolderDuyuru(ViewHolderDuyuru vh1, int position) {
         Duyuru d = (Duyuru) items.get(position);
+        //data[position][0]
         if (d != null) {
             vh1.getLabel1().setText(d.baslik);
             vh1.getLabel2().setText(d.ayrinti);
